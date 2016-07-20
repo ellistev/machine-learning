@@ -13,7 +13,23 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
+scalar = 1/(2*m);
 
+%e = 0;
+%for i = 1:m
+%	h = theta(1);
+%	for r = 2:size(X,2)
+%		h = h + (theta(r) * X(i,r));
+%	end;	
+%	a = h - y(i);
+%	b = a^2;
+%	e = e + b;
+%end;
+
+o = (X*theta)-y;
+e = o'*o;
+
+J = scalar * e;
 
 
 

@@ -31,6 +31,41 @@ for iter = 1:num_iters
 
     % Save the cost J in every iteration    
     J_history(iter) = computeCostMulti(X, y, theta);
+	
+	tempTheta = theta;
+
+	%sizeFeatures = size(X,2);
+	
+	%for n = 1:sizeFeatures
+	
+		%e = 0;
+		%h = 0;
+		%for i = 1:m
+		%	h = 0;
+		%	for t = 1:sizeFeatures
+		%		h = h + (theta(t) * X(i,t));
+		%	end;			
+		%	a = h - y(i);
+		%	b = a*X(i,n);
+		%	e = a*b;
+		%end;
+
+		%f = scalar * e;
+		%g = tempTheta(n) - f;
+		scalar = alpha/m;
+		a = X*theta;
+		b = a - y;
+		c = X' * b;
+		d = scalar*c;
+		e = theta-d;
+		
+		
+		
+		
+	%	tempTheta(n) = g;
+	%end;
+	
+	theta = e;
 
 end
 
