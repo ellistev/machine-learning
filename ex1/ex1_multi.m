@@ -106,6 +106,13 @@ fprintf('\n');
 % not need to be normalized.
 price = 0; % You should change this
 
+X = [1650, 3];
+
+[X] = featureNormalizeOldSigma(X, mu, sigma);
+X = [ones(1, 1) X];
+
+price = X * theta;
+
 
 % ============================================================
 
