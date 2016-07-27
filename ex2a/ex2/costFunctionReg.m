@@ -24,11 +24,15 @@ scalar = 1/m;
 
 z = X * theta;
 h = sigmoid(z);
-preJ = scalar * (-y'*log(h) - ((1 - y)' * log(1-h)));
-thetasquaresum = sum(theta.^2);
-J = preJ + ((lambda/2*m)*thetasquaresum);
+
+shift_theta = theta(2:size(theta));
+theta_reg = [0;shift_theta];
+
+preJ = scalar * (-y'*log(h) - (1 - y)' * log(1-h));
+thetasquaresum = theta_reg'*theta_reg;
+J = preJ + ((lambda/(2*m))*thetasquaresum);
 pregrad = scalar * X' * (h -y);
-grad = pregrad + ((lambda/m) * theta);
+grad = pregrad + ((lambda/m) * theta_reg);
 
 
 % =============================================================
