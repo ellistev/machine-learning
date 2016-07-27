@@ -20,6 +20,15 @@ grad = zeros(size(theta));
 
 
 
+scalar = 1/m;
+
+z = X * theta;
+h = sigmoid(z);
+preJ = scalar * (-y'*log(h) - ((1 - y)' * log(1-h)));
+thetasquaresum = sum(theta.^2);
+J = preJ + ((lambda/2*m)*thetasquaresum);
+pregrad = scalar * X' * (h -y);
+grad = pregrad + ((lambda/m) * theta);
 
 
 % =============================================================
