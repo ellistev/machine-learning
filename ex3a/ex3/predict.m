@@ -23,8 +23,13 @@ p = zeros(size(X, 1), 1);
 
 
 
+aug_X = [ones(size(X, 1), 1) X];
 
-
+layerone = sigmoid(aug_X*Theta1');
+layerone_aug = [ones(size(layerone, 1), 1) layerone];
+layertwo = sigmoid(layerone_aug*Theta2');
+[predict_max, index_max] = max(layertwo, [], 2);
+p = index_max;
 
 
 
