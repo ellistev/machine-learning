@@ -24,7 +24,20 @@ for epsilon = min(pval):stepsize:max(pval)
     %       of 0's and 1's of the outlier predictions
 
 
+    tp = sum((yval==1) & (pval<epsilon));
 
+    % yval says it's not an anomaly,  but algorithm says anomaly.
+    fp = sum((yval==0) & (pval<epsilon));
+
+    % yval says it's an anomaly,  but algorithm says not anomaly.
+    fn = sum((yval==1) & (pval>=epsilon));
+
+    % precision and recall
+    prec = tp/(tp+fp);
+    rec = tp/(tp+fn);
+
+    % F1 value;
+    F1 = (2*prec*rec)/(prec+rec);
 
 
 
